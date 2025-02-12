@@ -1,18 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Web Page</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>button Click</h1>
-        <p id="message">Click the button to change this text.</p>
-        <button id="changeTextBtn">Change Text</button>
-    </div>
+<html lang="pt">
+	<head>
+		<title>Lubrax+ System</title>
+		<meta charset="utf-8">
+		<meta name="description" content="Sistema de automação para troca de óleo">
+		<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+		<meta name="author" content="Holdertech do Brasil Ltda, 26.096.256/0001-38">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://cdn.lubraxmaissystem.com/icons/favicon.ico" type="image/ico">
+		<link rel="stylesheet" type="text/css" href="https://cdn.lubraxmaissystem.com/styles/root.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.lubraxmaissystem.com/plugins/loader/loader.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.lubraxmaissystem.com/plugins/header/header.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.lubraxmaissystem.com/plugins/footer/footer.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.lubraxmaissystem.com/styles/wireframe.css">
+        <link rel="stylesheet" type="text/css" href="index.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.lubraxmaissystem.com/styles/apex.css">
+		<script type="text/javascript" src="https://cdn.lubraxmaissystem.com/plugins/loader/loader.js"></script>
+		<script type="text/javascript" src="https://cdn.lubraxmaissystem.com/plugins/header/header.js"></script>
+		<script type="text/javascript" src="https://cdn.lubraxmaissystem.com/plugins/footer/footer.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+    </head>
+	<body id="Body" class="body" onload="app.launcher();">
+        
+        <form id="Login" class="login"></form>
 
-    <script src="script.js"></script>
-</body>
+        <form id="Recovery" class="recovery hidden"></form>
+
+        <form id="Register" class="register hidden"></form>
+
+        <form id="Apps" class="apps hidden">My Apps</form>
+
+        <div id="Author" class="author"></div>
+
+        <div id="Loader" class="loader"></div>
+
+		<div id="Error" class="error">Error</div>
+        
+	</body>
 </html>

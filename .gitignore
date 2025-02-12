@@ -1,0 +1,15 @@
+# Inforlube - Lubrax Mais Web - Auth - UI
+
+# Ignora arquivos de pastas e sub-pastas:
+temp/
+test/
+
+# Ignora arquivos com extensão:
+*.sample
+*.temp
+*.todo
+*.test
+*.exe
+
+# Ignora arquivos:
+web.config
