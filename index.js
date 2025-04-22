@@ -26,60 +26,8 @@ host.cdn = {
     }
 };
 
-/* =================
-   = Manipuladores =
-   ================= */
-var app = new Object();
 
-// Inicializador da aplicação
-app.launcher = function() {
-    loader.build();
-    app.build();
-    controller.token();
-    console.log("Sistema inicializado com sucesso");
-};
 
-// Construtor da aplicação
-app.build = function() {
-    builder.login();
-    builder.recovery();
-    builder.register();
-    builder.author();
-    builder.error();
-};
-
-// Manipulador de mensagens da aplicação
-app.message = {
-    // Remove o conteúdo de um container de mensagem
-    // <where> Id do container de mensagem
-    hide: function(where) {
-        var tag = document.getElementById(where).getElementsByClassName("message")[0];
-        tag.innerHTML = "";
-    },
-    // Inclui um conteúdo e estiliza um container de mensagem
-    // <where> Id do container de mensagem
-    // <msg> Texto da mesagem
-    // <layout> classe de estilo da mensagem
-    show: function(where, msg, layout) {
-        var tag = document.getElementById(where).getElementsByClassName("message")[0];
-        tag.setAttribute("class", "message");
-        tag.classList.add(layout);
-        tag.innerHTML = msg;
-    }
-};
-
-// Manipulador de formulários da aplicação
-// <id> id do formulário a ser exibido
-app.toggle = function(id) {
-    var forms = document.getElementById("Body").getElementsByTagName("form");
-    for (i = 0; i < forms.length; i++) {
-        let form = forms[i];
-        if (form.classList.contains("hidden") == false) {
-            form.classList.add("hidden");
-        };
-    };
-    document.getElementById(id).classList.remove("hidden");
-};
 
 // Manipulador do método de login
 app.login = async function() {
@@ -128,147 +76,6 @@ app.recovery = async function() {
     };
 };
 
-/* =================
-   = Construtores  =
-   ================= */
-var builder = new Object();
-
-// Constroi o formulário de login
-builder.login = function() {
-    var login = document.getElementById("Login");
-    login.innerHTML = "";
-    // Logotipo
-    let logo = document.createElement("img");
-        logo.setAttribute("alt", "Lubrax Mais");
-        logo.setAttribute("src", host.cdn.get("/images/lubrax/logos/", "lubrax-mais-system-color.svg"))
-    login.appendChild(logo);
-    //Título
-    let title = document.createElement("h1");
-        title.innerText = "Bem vindo ao Lubrax+ System";
-    login.appendChild(title);
-    // Subtítulo
-    let subtitle = document.createElement("h2");
-        subtitle.innerText = "Forneça suas credenciais para acessar o sistema";
-    login.appendChild(subtitle);
-    // Store
-    let _store = document.createElement("label");
-        _store.setAttribute("for", "Store");
-        _store.innerText = "Ponto de venda";
-    login.appendChild(_store);
-    let store = document.createElement("input");
-        store.setAttribute("type", "text");
-        store.setAttribute("id", "Store");
-        store.setAttribute("name", "Store");
-        store.setAttribute("autocomplete", "on");
-        store.setAttribute("placeholder", "Informe o seu CNPJ");
-        store.addEventListener("keydown", function(e) {
-            if (e.keyCode === 13) {
-                // Cancela o evento padrão da tecla
-                e.preventDefault();
-                document.getElementById("Username").focus();
-            };
-        });
-    login.appendChild(store);
-    // Username
-    let _username = document.createElement("label");
-        _username.setAttribute("for", "Username");
-        _username.innerText = "Nome de usuário";
-    login.appendChild(_username);
-    let username = document.createElement("input");
-        username.setAttribute("type", "text");
-        username.setAttribute("id", "Username");
-        username.setAttribute("name", "Username");
-        username.setAttribute("autocomplete", "on");
-        username.setAttribute("placeholder", "Informe seu nome de usuário");
-        username.addEventListener("keydown", function(e) {
-            if (e.keyCode === 13) {
-                // Cancela o evento padrão da tecla
-                e.preventDefault();
-                document.getElementById("Password").focus();
-            };
-        });
-    login.appendChild(username);
-    // Password: label
-    let _password = document.createElement("label");
-        _password.setAttribute("for", "Password");
-        _password.innerText = "Senha de acesso";
-    login.appendChild(_password);
-    // Password: input container
-    let box = document.createElement("div");
-    box.setAttribute("class", "password-box");
-    // Password: input
-    let password = document.createElement("input");
-        password.setAttribute("type", "password");
-        password.setAttribute("id", "Password");
-        password.setAttribute("name", "Password");
-        password.setAttribute("autocomplete", "off");
-        password.setAttribute("placeholder", "Informe sua senha");
-        password.addEventListener("keydown", function(e) {
-            if (e.keyCode === 13) {
-                // Cancela o evento padrão da tecla
-                e.preventDefault();
-                app.login();
-            };
-        });
-    box.appendChild(password);
-    // Password: button
-    let viewer = document.createElement("button");
-        viewer.setAttribute("type", "button");
-        viewer.setAttribute("class", "viewer show-key");
-        viewer.addEventListener("click", function() {
-            var input = document.getElementById("Password");
-            if (input.type === "password") {
-                input.type = "text";
-                this.classList.remove("show-key");
-                this.classList.add("hide-key");
-            } else {
-                input.type = "password";
-                this.classList.remove("hide-key");
-                this.classList.add("show-key");
-            };
-        });
-    box.appendChild(viewer);   
-    // Password: inclui o container do input
-    
-    login.appendChild(box);
-    // Entrar no sistema
-    let entry = document.createElement("button");
-        entry.setAttribute("type", "button");
-        entry.setAttribute("class", "filled");
-        entry.innerText = "Entrar";
-        entry.addEventListener("click", function() {
-            app.login();
-        });
-    login.appendChild(entry);
-    // Recuperar credenciais
-    let recovery = document.createElement("button");
-        recovery.setAttribute("type", "button");
-        recovery.setAttribute("class", "text");
-        recovery.innerText = "Esqueci meu usuário ou senha";
-        recovery.addEventListener("click", function() {
-            app.toggle("Recovery");
-        });
-    login.appendChild(recovery);
-    // Mensageiro
-    let message = document.createElement("div");
-        message.setAttribute("class", "message");
-    login.appendChild(message);
-    // Cadastre-se
-    let register = document.createElement("div");
-        register.setAttribute("class", "register");
-        let registerMsg = document.createElement("span");
-            registerMsg.innerText = "Ainda não tem uma conta?";
-        register.appendChild(registerMsg);
-        let registerBtn = document.createElement("button");
-            registerBtn.setAttribute("type", "button");
-            registerBtn.setAttribute("class", "link");
-            registerBtn.innerText = "Inscreva-se";
-            registerBtn.addEventListener("click", function() {
-                app.toggle("Register");
-            });
-        register.appendChild(registerBtn);        
-    login.appendChild(register);
-};
 
 // Constroi o formulário de recuperação de credenciais
 builder.recovery = function() {
@@ -408,21 +215,12 @@ builder.apps = async function(list) {
     footer.setup( { author: true } )
 };
 
-// Constroi o container do autor
-builder.author = function() {
-    var author = document.getElementById("Author");
-    author.innerHTML = "Powered by Holdertech do Brasil Ltda, 26.096.256/0001-38";
-};
 
-builder.error = function() {
-    var error = document.getElementById("Error");
-    error.innerHTML = "Este dispositivo não possui resolução sufificente para executar a aplicação. Para dispositivo móveis, tente utiliza-lo em modo Landscape, se o problema persistir, acesse novamente o sistema através de dispositivos com resolução igual ou superior a 256 x 480px.";
-}
 
 /* =================
    = Controladores =
    ================= */
-var controller = new Object();
+
 
 // Método de autenticação de usuários
 // <credenciais> Objeto que contem as credenciais necessárias para o login
@@ -468,34 +266,7 @@ controller.login = async function(credenciais) {
     .finally(() => { loader.hide(); });
 };
 
-// Verifica se o token atual está válido
-controller.token = async function() {
-    var token = localStorage.getItem('token');
-    app.message.hide("Login");
-    const path = host.api.get("/Auth/checkToken");
-    const make = {
-        method: 'POST',
-        headers: {
-            'accept': 'application/json',
-            'Content-Type': 'application/json',
-            'data-culture': 'pt-BR',
-            'Authorization': 'Bearer ' + token
-        }
-    };
-    loader.show("Verificando a validade do token");
-    fetch(path, make)
-    .then(response => { return response; })
-    .then(data => { 
-        if (data.ok == true) {
-            builder.apps(localStorage.getItem('apps'))
-            app.toggle("Apps");
-        } else {
-            app.toggle("Login");
-        };
-     })
-    .catch(error => { app.message.show("Login", "Erro ao realizar a requisição. (" + error + ")", "danger"); })
-    .finally(() => { loader.hide(); });
-};
+
 
 // Método de recuperação de credenciais
 // <credenciais> Objeto que contem as credenciais necessárias para o login

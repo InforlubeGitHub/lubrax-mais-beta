@@ -1,13 +1,6 @@
 @charset "UTF-8";
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    background-color: var(--one);
-}
+
 
 label {
     width: 100%;
@@ -53,10 +46,7 @@ button:hover { font-weight: bold; }
         background-color: transparent;
     }
 
-img {
-    width: auto;
-    height: 64px;
-}
+
 h1 {
     width: 100%;
     color: var(--one);
@@ -75,52 +65,14 @@ h3 {
     color: var(--one);
 }
 
-.message {
-    width: 100%;
-    margin: 40px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    text-align: center;
-}
-    .message.info { color: var(--info); }
-    .message.danger { color: var(--danger); }
-    .message.success { color: var(--success); }
 
-form.login,
-form.recovery,
-form.register {
-    max-height: calc(100% - 64px);
-    padding: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    border-radius: 8px;
-    background-color: #fff;
-    -webkit-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.5);
-}
+
+
 
 /* Estilos do formulário de login */
-.login img { margin-bottom: 24px; }
-.login h1 { margin-bottom: 8px; }
-.login h2 { margin-bottom: 40px; }
 
-.login .register {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-    .login .register button { margin-left: 8px; }
+
+
 
 .login .password-box {
     width: 100%;
@@ -255,106 +207,4 @@ form.apps {
         filter: grayscale(100%);
     }
 
-/* Estilos do container do autor */
-.author {
-    width: 100%;
-    padding: 16px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    color: #fff;
-    text-align: center;
-    font-size: 16px;
-}
 
-/* Mídias com resolução inferior a 256px de largura ou 480px de altura */
-@media only screen and (max-width: 255px), (max-height: 479px) {
-    .login { display: none !important; }
-    .recovery { display: none !important; }
-    .register { display: none !important; }
-    .apps { display: none !important; }
-    .author { display: none !important; }
-    .loader { display: none !important; }
-    .error { display: flex !important; }
-}
-
-/* Mídias com resolução inferior a 512px de altura */
-@media only screen and (max-height: 600px) {
-    body { justify-content: flex-start !important; }
-    form.login,
-    form.recovery,
-    form.register {
-        max-height: calc(100% - 32px) !important;
-    }
-    .apps .wrapper { padding: 16px !important; }
-}
-
-/* Mídias com resolução inferior entre 328px e 256px de largura */
-@media only screen and (max-width: 327px) and (min-width: 256px) {
-    form.login,
-    form.recovery,
-    form.register {
-        width: 90% !important;
-        padding: 16px !important;
-    }
-    img {
-        width: 80% !important;
-        height: auto !important;
-        margin-bottom: 8px !important;
-    }
-    h1 { font-size: 12px !important; }
-    h2 {
-        font-size: 9px !important;
-        margin-bottom: 16px !important;
-    }
-    label { font-size: 12px !important; }
-    input {
-        margin-bottom: 8px !important;
-        padding: 8px !important;
-        font-size: 12px !important;
-    }
-    button.text { font-size: 12px !important; }
-    button.link { font-size: 12px !important; }
-    span { font-size: 12px !important; }
-    .message {
-        margin: 8px 0px !important;
-        font-size: 12px !important;
-    }
-    .author { font-size: 12px !important; }
-    .apps .wrapper { padding: 16px !important; }
-}
-
-/* Mídias com resolução inferior entre 400px e 328px de largura */
-@media only screen and (max-width: 400px) and (min-width: 328px) {
-    form.login,
-    form.recovery,
-    form.register {
-        width: 90% !important;
-    }
-    .author { font-size: 10px !important; }
-    .apps .wrapper { padding: 16px !important; }
-}
-
-/* Mídias com resolução inferior entre 401px e 512px de largura */
-@media only screen and (max-width: 512px) and (min-width: 401px) {
-    form.login,
-    form.recovery,
-    form.register {
-        width: 80% !important;
-    }
-    .author { font-size: 14px !important; }
-    .apps .wrapper { padding: 16px !important; }
-}
-
-/* Mídias com resolução superior a 512px de largura */
-@media only screen and (min-width: 513px) {
-    form.login,
-    form.recovery,
-    form.register {
-        width: 432px !important;
-    }
-    .author { font-size: 16px !important; }
-}
-
-/* Use when in debug mode */
-/* *, *::before, *::after, button, i { border: 1px dashed #000 !important; } */
